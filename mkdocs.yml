@@ -12,6 +12,7 @@ nav:
   - Home: 'index.md'
   - Lectures:
       - 0:Course Overview: 'lectures/Lecture0.md'
+      - 1:Machine Learning Lifecycle: 'lectures/Lecture1.md'
       # - 1:Requirements Discovery: 'lectures/Lecture1.md'
   # - Code:
   #     - Storage Engines: 'code/storage_engines/README.md'
