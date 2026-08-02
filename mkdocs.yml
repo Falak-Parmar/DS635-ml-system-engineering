@@ -13,6 +13,9 @@ nav:
   - Lectures:
       - 0:Course Overview: 'lectures/Lecture0.md'
       - 1:Machine Learning Lifecycle: 'lectures/Lecture1.md'
+      - 2:Hardware Accelerators: 'lectures/Lecture2.md'
+      # - 3:Memory Hierarchy & Roofline: 'lectures/Lecture3.md'
+      # - 4:Tensor Cores & Precision: 'lectures/Lecture4.md'
       # - 1:Requirements Discovery: 'lectures/Lecture1.md'
   # - Code:
   #     - Storage Engines: 'code/storage_engines/README.md'
