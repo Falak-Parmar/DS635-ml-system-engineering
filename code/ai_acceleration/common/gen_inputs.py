@@ -24,7 +24,7 @@ def generate(n: int, outdir: str) -> None:
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("--n", type=int, nargs="+", default=[256, 1024, 2048])
+    p.add_argument("--n", type=int, nargs="+", default=[256, 1024, 2048, 4096])
     p.add_argument("--datadir", default=os.path.join(os.path.dirname(__file__), "..", "data"))
     args = p.parse_args()
     for n in args.n:

@@ -24,15 +24,16 @@
 #endif
 
 static void matmul(const float *restrict A, const float *restrict B,
-                   float *restrict C, int n) {
+                   float *restrict C, int n) {          // restrict → SIMD (no-alias guarantee)
     for (int ii = 0; ii < n; ii += T)
         for (int kk = 0; kk < n; kk += T)
-            for (int jj = 0; jj < n; jj += T)
+            for (int jj = 0; jj < n; jj += T)           // tile loops → TEMPORAL (working set fits in cache)
                 for (int i = ii; i < ii + T; i++)
                     for (int k = kk; k < kk + T; k++) {
-                        float a = A[i * n + k];
+                        float a = A[i * n + k];          // TEMPORAL (register): reused T times below
                         for (int j = jj; j < jj + T; j++)
                             C[i * n + j] += a * B[k * n + j];
+                            // ^ SPATIAL: stride-1 on B and C   ^ SIMD: broadcast-a FMA, independent lanes
                     }
 }
 

@@ -255,7 +255,16 @@ Process the matrices in T×T blocks so the working set stays in cache:
 
 - **Concept: thread parallelism.** Independent tiles of C can be computed by different cores — no coordination needed, because matmul's outputs don't depend on each other.
 - Result: **106 GFLOP/s** on 8 cores. Within ~2× of NumPy's BLAS — we have essentially reconstructed a real library.
-- **This is the CPU ceiling.** Every remaining gain needs more cores, and cores are expensive in area and power.
+
+!!! question "💬 `lscpu` says 16 CPUs, yet the speedup over one core is only ~5×. Where did the other 11 go?"
+
+    ??? hint "Answer"
+        - **8 of the 16 were never cores.** This chip has 8 physical cores × 2 SMT threads ("hyperthreads"). Each *pair* of threads shares one core's FMA units — and a dense matmul already keeps those pipes full with one thread, so the second adds ~nothing. What the OS advertises (logical CPUs) and what the silicon has (FPUs) are different numbers. Honest ceiling: 8×.
+        - **All-core clock < single-core boost.** One busy core turbos to ~4.6 GHz; eight busy cores share the same power/thermal budget and settle near ~3.5 GHz. Each core is ~20% slower than the single core was. The power budget is a shared resource.
+        - **L3 and DRAM bandwidth are shared too.** One core had 16 MB of L3 to itself; eight get 2 MB each, and all their misses queue at one memory controller. Compute ×8, bytes/second ×1.
+        - Measure it: sweep `OMP_NUM_THREADS=1,2,4,8` (pinned: `OMP_PLACES=cores`). Scaling is ~1.9× at 2 threads, sagging by 4, rolled over by 8 — the signature of shared-resource contention. *We bought 8× the arithmetic and 1× the memory — and got 5×.*
+
+- **This is the CPU ceiling.** Every remaining gain needs more cores — and cores multiply neither the memory bandwidth nor the power budget they must share.
 
 ---
 
@@ -323,3 +332,4 @@ The [README](https://github.com/Ankush-Chander/DS635-ml-system-engineering/tree/
 1. Vijay Janapa Reddi, [*Machine Learning Systems*](https://mlsysbook.ai) — Ch 11: AI Acceleration (§§ 11.4, 11.7)
 2. Samuel Williams et al., [*Roofline: An Insightful Visual Performance Model*](https://dl.acm.org/doi/10.1145/1498765.1498785) (CACM 2009)
 3. [How to Tile Matrix Multiplication](https://alvinwan.com/how-to-tile-matrix-multiplication/)
+4. [Matrix Multiplication: Tiling & Cache Visualization](https://arthurviens.github.io/cache-visualizer/)
