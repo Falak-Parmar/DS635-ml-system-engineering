@@ -1,16 +1,17 @@
 {
   "answers": {
-    "fence_penalty_ratio": 63.06,
+    "fence_penalty_ratio": 61.42,
     "graph_cpu_speedup": null,
     "launch_bound_elements": 65536,
     "nosync_over_peak": 600.23,
     "overlap_efficiency": null,
     "peak_efficiency": 0.66,
-    "peak_measured_tflops": 2.859798595777011,
+    "peak_measured_tflops": 2.8111021428552156,
     "peak_vendor_tflops": 4.26,
     "pinning_helps_below_mb": null
   },
   "env": {
+    "ac_power": true,
     "arch": "arm",
     "backend": "Metal / MPS",
     "caps": {
@@ -21,18 +22,130 @@
     },
     "clock_ghz_reported": null,
     "device": "Apple silicon GPU (arm64)",
-    "exported_utc": "2026-08-17T12:58:41+00:00",
+    "exported_utc": "2026-08-17T16:19:08+00:00",
+    "iters": 30,
+    "matmul_n": 4096,
     "multi_processor_count": null,
+    "peak_tflops_declared": 4.26,
     "platform": "macOS-26.6.1-arm64-arm-64bit-Mach-O",
-    "started_utc": "2026-08-17T10:57:38+00:00",
+    "safe_mode": false,
+    "started_utc": "2026-08-17T16:11:28+00:00",
     "torch": "2.10.0",
     "vendor": "mps",
     "vram_gb": 12.71
   },
   "integrity": {
-    "sha256": "79d451a9f1e65ba7"
+    "sha256": "6ca69ebc8b996ed4"
   },
-  "results": {},
+  "results": {
+    "fence": {
+      "intervals": [
+        1,
+        2,
+        5,
+        10,
+        25,
+        50,
+        100,
+        250,
+        500
+      ],
+      "n_ops": 500,
+      "totals_ms": [
+        92.38244433072396,
+        41.31763866947343,
+        18.276486002529662,
+        10.240527665397773,
+        5.127069336595014,
+        3.1351943325717,
+        2.226041668715576,
+        1.640596999398743,
+        1.5041666629258543
+      ]
+    },
+    "graph": {
+      "skipped": "no graph capture on this backend"
+    },
+    "launch": {
+      "submit_us": 3.9353954925900325
+    },
+    "overlap": {
+      "skipped": "no stream API on this backend"
+    },
+    "peak": {
+      "derived_clock_ghz": null,
+      "derived_lanes": null,
+      "derived_tflops": null,
+      "derived_units": null,
+      "efficiency": 0.6598831321256375,
+      "measured_sizes": [
+        1024,
+        2048,
+        4096
+      ],
+      "measured_tflops": 2.8111021428552156,
+      "measured_tflops_all": [
+        1.6818825511521356,
+        2.4775560531856597,
+        2.8111021428552156
+      ],
+      "vendor_source": "arxiv.org/ Apples vs. Oranges",
+      "vendor_tflops": 4.26
+    },
+    "submission": {
+      "flop": 137438953472,
+      "implied_tflops": {
+        "event": 2.837492809204304,
+        "nosync": 2856.780584459476,
+        "sync": 2.8665021745202224
+      },
+      "iters": 30,
+      "n": 4096,
+      "t_event_ms": 48.43675833333334,
+      "t_nosync_ms": 0.04810973381002744,
+      "t_sync_ms": 47.94657219996831
+    },
+    "sweep": {
+      "per_op_us": [
+        8.03021,
+        7.507499999999999,
+        8.002500000000001,
+        7.35229,
+        12.222914999999999,
+        102.82208499999999,
+        364.16229500000003,
+        1291.679375
+      ],
+      "sizes": [
+        1,
+        16,
+        256,
+        4096,
+        65536,
+        1048576,
+        4194304,
+        16777216
+      ]
+    },
+    "transfer": {
+      "bw_pageable_gbs": [
+        1.809670931065995,
+        4.865475971114714,
+        11.138985614127323,
+        20.724952648673508,
+        22.592914636675843
+      ],
+      "bw_pinned_gbs": null,
+      "sizes_mb": [
+        1,
+        4,
+        16,
+        64,
+        256
+      ],
+      "skipped": "pin_memory unsupported on this backend"
+    }
+  },
   "schema_version": 2,
   "student": {
     "name": "Falak Parmar",
