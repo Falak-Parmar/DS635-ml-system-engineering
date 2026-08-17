@@ -1,0 +1,41 @@
+{
+  "answers": {
+    "fence_penalty_ratio": 63.06,
+    "graph_cpu_speedup": null,
+    "launch_bound_elements": 65536,
+    "nosync_over_peak": 600.23,
+    "overlap_efficiency": null,
+    "peak_efficiency": 0.66,
+    "peak_measured_tflops": 2.859798595777011,
+    "peak_vendor_tflops": 4.26,
+    "pinning_helps_below_mb": null
+  },
+  "env": {
+    "arch": "arm",
+    "backend": "Metal / MPS",
+    "caps": {
+      "events": true,
+      "graphs": false,
+      "pinned": false,
+      "streams": false
+    },
+    "clock_ghz_reported": null,
+    "device": "Apple silicon GPU (arm64)",
+    "exported_utc": "2026-08-17T12:58:41+00:00",
+    "multi_processor_count": null,
+    "platform": "macOS-26.6.1-arm64-arm-64bit-Mach-O",
+    "started_utc": "2026-08-17T10:57:38+00:00",
+    "torch": "2.10.0",
+    "vendor": "mps",
+    "vram_gb": 12.71
+  },
+  "integrity": {
+    "sha256": "79d451a9f1e65ba7"
+  },
+  "results": {},
+  "schema_version": 2,
+  "student": {
+    "name": "Falak Parmar",
+    "roll": "202518053"
+  }
+}
