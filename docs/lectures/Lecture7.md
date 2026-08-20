@@ -30,6 +30,49 @@ GPU. If you do not have one, open the same page as a notebook on a free Colab T4
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ankush-Chander/DS635-ml-system-engineering/blob/main/docs/lectures/Lecture7.ipynb)
 
+On Colab, pick **Runtime → Change runtime type → T4 GPU** first, then run the
+cell below once. It installs only what is missing, so it is a no-op on a machine
+that already has everything.
+
+```python
+# Setup. Safe to re-run: nothing is installed if it is already importable.
+import importlib.util, subprocess, sys
+
+def ensure(module, spec=None):
+    """Install `spec` only if `module` cannot already be imported."""
+    if importlib.util.find_spec(module) is not None:
+        return
+    for candidate in ([spec, module] if spec and spec != module else [module]):
+        print(f"installing {candidate} ...")
+        if subprocess.run([sys.executable, "-m", "pip", "install", "-q", candidate]).returncode == 0:
+            return
+    raise RuntimeError(f"could not install {module}")
+
+def triton_spec():
+    """The exact Triton this torch build was compiled against.
+
+    Torch declares Triton as a dependency, so we can read the pin instead of
+    guessing. A mismatched Triton imports fine and then fails at the first
+    `@triton.jit` -- much harder to diagnose than a missing package.
+    """
+    try:
+        from importlib.metadata import requires
+        for req in requires("torch") or []:
+            dep = req.split(";")[0].strip()     # drop the environment marker
+            if "triton" in dep:                 # `triton` on CUDA, `triton-rocm` on ROCm
+                return dep
+    except Exception:
+        pass
+    return "triton"
+
+ensure("torch")                  # preinstalled on Colab; listed so the set is complete
+ensure("matplotlib")
+ensure("triton", triton_spec())
+
+import torch, triton
+print(f"torch {torch.__version__} | triton {triton.__version__} | cuda {torch.cuda.is_available()}")
+```
+
 ---
 
 ## The bird's-eye view
