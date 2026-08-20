@@ -37,3 +37,14 @@ mkdocs serve
 
 - Vijay Janapa Reddi, [*Machine Learning Systems*](https://mlsysbook.ai)
 - Chip Huyen, *Designing Machine Learning Systems* (O'Reilly, 2022)
+
+## Trust & Transparency notes
+
+- **Source & Attribution**: This repository contains course materials, templates, and syllabus structure authored by the course instructor, [Ankush Chander](https://github.com/Ankush-Chander), for Dhirubhai Ambani University. Lab submissions and custom profiling implementations are authored by me.
+- **Motive**: Created as a coursework log and laboratory playground for learning ML Systems Engineering principles (focusing on GPU execution protocols and bottleneck diagnostics).
+- **Modifications**: Coded profiling loops for measuring GPU job submission costs, PCIe page-locked memory speeds, and asynchronous stream execution, saving metrics in custom JSON outputs.
+- **Limitations**:
+  - The repository's primary focus is academic, meaning components are structured around course lab prompts rather than production-grade libraries.
+  - Most labs authored by me were run on my MacBook M4 Air or within a GitHub Codespace (where Linux is required); therefore, the performance metrics should not be taken as absolute benchmarks.
+- **Tooling & AI Usage**: No AI was used to write the code. Gemini assistance was utilized solely to research course concepts and help structure the text explanations in the markdown reports.
+
