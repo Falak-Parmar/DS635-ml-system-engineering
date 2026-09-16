@@ -11,3 +11,5 @@ AGENTS.md
 code/gpu_submission/make_fake_cohort.py
 gguf_artifacts
 *.gguf
+lab11_12_work/
+submission_lab11_12_*.json
