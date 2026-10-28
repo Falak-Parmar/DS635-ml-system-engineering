@@ -1,0 +1,71 @@
+{
+  "roll": "202512345",
+  "name": "Falak",
+  "env": {
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6",
+    "torch": "2.10.0",
+    "safetensors": "0.7.0",
+    "linux": false
+  },
+  "results": {
+    "formats": {
+      "pt": {
+        "file_mb": 251.7,
+        "cold_s": 0.023,
+        "warm_s": 0.017,
+        "cold_read_bytes_mb": null,
+        "load_rss_delta_mb": 0.0,
+        "load_rchar_mb": null
+      },
+      "safetensors": {
+        "file_mb": 251.7,
+        "cold_s": 0.008,
+        "warm_s": 0.0,
+        "cold_read_bytes_mb": null,
+        "load_rss_delta_mb": 0.0,
+        "load_rchar_mb": null,
+        "explicit_read_rchar_mb": null
+      },
+      "gguf": {
+        "file_mb": 1997.5
+      }
+    },
+    "stride": {
+      "transpose_same_ptr": true,
+      "contig_sizes_mb": [
+        16.8,
+        67.1,
+        151.0,
+        268.4
+      ],
+      "contig_times_ms": [
+        3.08,
+        16.55,
+        34.7,
+        67.97
+      ],
+      "safetensors_refused_view": true
+    },
+    "trust": {
+      "payload_fired_default": false,
+      "blocked_by_weights_only": true,
+      "payload_fired_unsafe": true
+    },
+    "gguf_real": {
+      "arch": "phi3",
+      "vocab_size": 32064,
+      "n_kv_read": 15,
+      "unhandled_type_tags": [
+        5
+      ]
+    }
+  },
+  "answers": {
+    "warm_faster_than_cold": true,
+    "safetensors_rss_near_zero": true,
+    "contiguous_cost_grows": true,
+    "weights_only_blocked_it": true,
+    "safetensors_still_cannot": "Malicious weights, metadata lies, loader bugs"
+  }
+}
