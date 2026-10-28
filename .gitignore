@@ -11,4 +11,5 @@ AGENTS.md
 code/gpu_submission/make_fake_cohort.py
 gguf_artifacts
 *.gguf
+code/quantization/gguf_block/llama.cpp/
 lab11_12_work/
