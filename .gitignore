@@ -13,3 +13,6 @@ gguf_artifacts
 *.gguf
 code/quantization/gguf_block/llama.cpp/
 lab11_12_work/
+lab19_22_work/
+202518053.zip
+
